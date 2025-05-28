@@ -1,5 +1,9 @@
 import java.util.LinkedList;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 /**
  * Location for shared app data
  *
@@ -11,6 +15,22 @@ public class Blackboard {
     private static String activeStory = "";
     private static int selectedCard = -1;
     private static String user = "Default User";
+
+    // Uriel
+    private static LinkedList<String> members = new LinkedList<>();
+    private static Map<String, String[]> rooms = new HashMap<>();
+
+    // NEW
+    private static Blackboard instance;
+
+    private Blackboard(){
+        super();
+    }
+    public static Blackboard getInstance(){
+        if(instance == null)
+            instance = new Blackboard();
+        return instance;
+    }
 
     public static void addNewStory(String story){
         storyQueue.add(story);
@@ -36,4 +56,18 @@ public class Blackboard {
     public static String getUser(){
         return user;
     }
+
+    // THIS IS ADDING URIEL BLACKBOARD
+
+    public static void addUser(String name){
+        members.add(name.trim());
+    }
+
+    public static void addNewRoom(String name, String mode, String description){
+        if (!name.isEmpty()){
+            String[] roomInfo = {mode, description};
+            rooms.put(name,roomInfo);
+        }
+    }
+
 }

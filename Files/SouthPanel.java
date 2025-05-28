@@ -1,3 +1,4 @@
+/*
 package four;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.util.List;
  *
  * Created a button to remove the top active story
  */
+/*
 public class SouthPanel extends JPanel {
 	private JTextArea completedStoriesArea;
 	private JTextArea activeStoriesArea;
@@ -93,3 +95,4 @@ public class SouthPanel extends JPanel {
 		activeStoriesArea.setText(updated.toString());
 	}
 }
+*/

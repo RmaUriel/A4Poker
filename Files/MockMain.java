@@ -15,6 +15,13 @@ public class MockMain extends JFrame {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setResizable(false);
         app.setVisible(true);
+
+        JFrame joinRoom = new joinRoom();
+        joinRoom.setVisible(true);
+        joinRoom.setLocation(500,100);
+
+        JFrame createRoom = new CreateRoom();
+        createRoom.setVisible(true);
     }
 
     public MockMain(){
@@ -24,4 +31,18 @@ public class MockMain extends JFrame {
         add(utilitiesPanel, BorderLayout.EAST);
         add(cardPanel, BorderLayout.CENTER);
     }
+/*
+    //URIEL MAIN
+    public static void main(String[] args){
+
+        JFrame joinRoom = new joinRoom();
+        joinRoom.setVisible(true);
+        joinRoom.setLocation(500,100);
+
+        JFrame createRoom = new CreateRoom();
+        createRoom.setVisible(true);
+
+    }
+
+ */
 }

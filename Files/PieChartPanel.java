@@ -1,3 +1,4 @@
+/*
 package four;
 
 import javax.swing.*;
@@ -9,6 +10,8 @@ import java.awt.*;
  *
  * @author MichaelMan
  */
+
+/*
 class PieChartPanel extends JPanel {
     private String[] labels;
     private int[] values;
@@ -130,3 +133,5 @@ class PieChartPanel extends JPanel {
         }
     }
 }
+
+ */

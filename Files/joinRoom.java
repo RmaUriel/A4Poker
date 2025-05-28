@@ -46,7 +46,7 @@ public class joinRoom extends JFrame{
         joinButton.setBounds(180, 175,100,50);
         add(joinButton);
 
-        joinButton.addActionListener(e -> StoriesNannies.addName(enterName.getText()));
+        joinButton.addActionListener(e -> UtilitiesNanny.addName(enterName.getText()));
 
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(180, 365, 100,50);

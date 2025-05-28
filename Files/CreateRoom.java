@@ -64,7 +64,7 @@ public class CreateRoom extends JFrame{
         create.setBounds(200,400, 100,50);
         add(create);
 
-        create.addActionListener(e -> StoriesNannies.addRoom(enterName.getText(),(String) modesMenu.getSelectedItem(), description.getText()));
+        create.addActionListener(e -> UtilitiesNanny.addRoom(enterName.getText(),(String) modesMenu.getSelectedItem(), description.getText()));
     }
 
 }
