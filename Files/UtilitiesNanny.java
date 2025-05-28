@@ -1,6 +1,9 @@
+import com.sun.tools.javac.Main;
+
 import java.awt.*;
 import javax.swing.*;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  * Contains handlers for managing the general control of the application.
  * Features include opening the add story panel and showing/hiding results.
@@ -56,7 +59,11 @@ public class UtilitiesNanny {
     public static void addName(String name){
         if(!name.isEmpty()){
             System.out.println(name);
-            SwingUtilities.invokeLater(() -> new MainInterface().setVisible(true));
+            SwingUtilities.invokeLater(() -> {
+                MainInterface mainInterface = new MainInterface();
+                mainInterface.pack();
+                mainInterface.setVisible(true);
+            });
         }
     }
 
@@ -67,8 +74,8 @@ public class UtilitiesNanny {
     }
 
     //MICHAEL NANNY
-/*
-    private Main main;
+
+
     public static List<String> activeStory = new ArrayList<>();
 
 
@@ -81,8 +88,8 @@ public class UtilitiesNanny {
     public void saveAndClose(String text) {
         System.out.println(text);
         this.activeStory.add(text);
-        Blackboard.addStory(text);
-        switchGUI();
+        Blackboard.addNewStory(text);
+        //switchGUI();
     }
 
     public void importStories() {
@@ -93,20 +100,22 @@ public class UtilitiesNanny {
         System.out.println("canceling...");
     }
 
-    private void switchGUI() {
-        main.setTitle("dashboard");
-        DashboardNanny dashboardNanny = new DashboardNanny(main);
+/*    private void switchGUI() {
+        window.setTitle("dashboard");
+        DashboardNanny dashboardNanny = new DashboardNanny(window);
         DashboardPanel dashboardPanel = new DashboardPanel(dashboardNanny);
-        main.setContentPane(dashboardPanel);
-        main.setSize(800, 600);
-        main.setLocationRelativeTo(null);
-        main.revalidate();
-        main.repaint();
+        window.setContentPane(dashboardPanel);
+        window.setSize(800, 600);
+        window.setLocationRelativeTo(null);
+        window.revalidate();
+        window.repaint();
     }
 
+
+ */
     public static List<String> getActive(){
         return activeStory;
     }
 
- */
+
 }

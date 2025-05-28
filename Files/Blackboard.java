@@ -21,6 +21,11 @@ public class Blackboard {
     private static Map<String, String[]> rooms = new HashMap<>();
 
     // NEW
+    public final int ROOM_WINDOW_WIDTH = 500;
+    public final int ROOM_WINDOW_HEIGHT = 500;
+    public final int MAIN_WINDOW_WIDTH = 1000;
+    public final int MAIN_WINDOW_HEIGHT = 800;
+
     private static Blackboard instance;
 
     private Blackboard(){

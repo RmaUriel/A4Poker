@@ -18,7 +18,6 @@ public class CreateRoom extends JFrame{
     
     public CreateRoom(){
         setLayout(null);
-        setSize(500,500);
         setTitle("Create a Room");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -66,5 +65,8 @@ public class CreateRoom extends JFrame{
 
         create.addActionListener(e -> UtilitiesNanny.addRoom(enterName.getText(),(String) modesMenu.getSelectedItem(), description.getText()));
     }
-
+    @Override
+    public Dimension getPreferredSize(){
+        return new Dimension(Blackboard.getInstance().ROOM_WINDOW_WIDTH, Blackboard.getInstance().ROOM_WINDOW_HEIGHT);
+    }
 }

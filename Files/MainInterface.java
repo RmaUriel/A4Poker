@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.beans.PropertyChangeListener;
 import java.util.*;
 /*
  * This class is for the mainframe where frames will be shown together
@@ -11,42 +12,30 @@ import java.util.*;
  * 
  */
 
-public class MainInterface extends JFrame{
+public class MainInterface extends JFrame {
 
     public MainInterface(){
+      Blackboard blackBoard = Blackboard.getInstance();
+
       setLayout(new BorderLayout());
       setTitle("Main Interface");
-      setSize(1500,900);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setResizable(false);
 
-      JPanel cardSpace = new JPanel();
-      cardSpace.setBackground(Color.RED);
-      cardSpace.setLayout(new GridLayout(4,3,10,10));
-      for(int i = 0; i < 5; i++){
-        JButton card = new JButton("Card" + i);
-        card.setBackground(Color.BLACK);
-        cardSpace.add(card);
-      }
-      add(cardSpace, BorderLayout.CENTER);
+      CardsPanel cardsPanel = new CardsPanel();
+      add(cardsPanel, BorderLayout.CENTER);
 
-      JPanel storyTable = new JPanel();
-      storyTable.setBackground(new Color(0,100,255));
-      storyTable.setLayout(new GridLayout(3,2));
-      String[] columnName = {"Active Story","Completed Story"};
-      Object [][] data = {{1,"Story 1"}, {2, "S2"}, {3, "Stor 3"}};
-      DefaultTableModel tab = new DefaultTableModel(data, columnName);
-      JTable table = new JTable(tab);
-      storyTable.add(table, BorderLayout.CENTER);
-      add(storyTable, BorderLayout.SOUTH);
+      SouthPanel southPanel = new SouthPanel();
+      add(southPanel, BorderLayout.SOUTH);
 
-      JPanel controls = new JPanel();
-      controls.setBackground(Color.DARK_GRAY);
-      controls.setLayout(new GridLayout(3,1));
-      controls.add(new JLabel("Vote"));
-      controls.add(new JButton("SELECT"));
-      controls.add(new JLabel("TWO"));
-      add(controls, BorderLayout.EAST);
+      MockMain mockMainInstance = new MockMain();
+      JPanel utilitiesPanel = new UtilitiesPanel(new UtilitiesNanny(mockMainInstance));
+      add(utilitiesPanel, BorderLayout.EAST);
 
     }
+  @Override
+  public Dimension getPreferredSize(){
+    return new Dimension(Blackboard.getInstance().MAIN_WINDOW_WIDTH, Blackboard.getInstance().MAIN_WINDOW_HEIGHT);
+  }
+
 }

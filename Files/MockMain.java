@@ -16,12 +16,16 @@ public class MockMain extends JFrame {
         app.setResizable(false);
         app.setVisible(true);
 
+        //Uriel
         JFrame joinRoom = new joinRoom();
+        joinRoom.pack();
         joinRoom.setVisible(true);
         joinRoom.setLocation(500,100);
 
         JFrame createRoom = new CreateRoom();
+        createRoom.pack();
         createRoom.setVisible(true);
+
     }
 
     public MockMain(){
@@ -31,18 +35,5 @@ public class MockMain extends JFrame {
         add(utilitiesPanel, BorderLayout.EAST);
         add(cardPanel, BorderLayout.CENTER);
     }
-/*
-    //URIEL MAIN
-    public static void main(String[] args){
 
-        JFrame joinRoom = new joinRoom();
-        joinRoom.setVisible(true);
-        joinRoom.setLocation(500,100);
-
-        JFrame createRoom = new CreateRoom();
-        createRoom.setVisible(true);
-
-    }
-
- */
 }

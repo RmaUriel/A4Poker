@@ -1,5 +1,3 @@
-/*
-package four;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +13,12 @@ import java.util.List;
  *
  * Created a button to remove the top active story
  */
-/*
+
 public class SouthPanel extends JPanel {
 	private JTextArea completedStoriesArea;
 	private JTextArea activeStoriesArea;
-	private List<String> active = three.StoriesNanny.getActive();
+	//private List<String> active = three.StoriesNanny.getActive();
+    private List<String> active = UtilitiesNanny.getActive();
 
 	public SouthPanel() {
 		setBackground(new Color(161, 190, 239));
@@ -95,4 +94,3 @@ public class SouthPanel extends JPanel {
 		activeStoriesArea.setText(updated.toString());
 	}
 }
-*/

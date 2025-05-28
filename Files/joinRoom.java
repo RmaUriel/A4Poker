@@ -17,7 +17,6 @@ public class joinRoom extends JFrame{
 
     public joinRoom(){
         setTitle("Join a room");
-        setSize(500,500);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,9 +50,11 @@ public class joinRoom extends JFrame{
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(180, 365, 100,50);
         add(loginButton);
-        //loginButton.addActionListener(e -> StoriesNannies.addName(enterName.getText()));
 
-
+    }
+    @Override
+    public Dimension getPreferredSize(){
+        return new Dimension(Blackboard.getInstance().ROOM_WINDOW_WIDTH, Blackboard.getInstance().ROOM_WINDOW_HEIGHT);
     }
 
 }

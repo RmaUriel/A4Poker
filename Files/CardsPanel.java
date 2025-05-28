@@ -1,5 +1,4 @@
-/*
-package four;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +9,7 @@ import java.awt.*;
  * Changed the panel so that when the cards are clicked, the result of the vote is shown
  * @author javiergs
  */
-/*
+
 public class CardsPanel extends JPanel {
 
 	private String currentStory = "Current Story: Build User Login System";
@@ -61,5 +60,5 @@ public class CardsPanel extends JPanel {
 	}
 }
 
- */
+
 
