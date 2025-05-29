@@ -17,6 +17,7 @@ import java.util.List;
 public class SouthPanel extends JPanel {
 	private JTextArea completedStoriesArea;
 	private JTextArea activeStoriesArea;
+	private JTextArea upcomingStoriesArea;
 	//private List<String> active = three.StoriesNanny.getActive();
     private List<String> active = UtilitiesNanny.getActive();
 
@@ -36,8 +37,12 @@ public class SouthPanel extends JPanel {
 		completedStoriesArea = new JTextArea();
 		completedStoriesArea.setEditable(false);
 
+		upcomingStoriesArea = new JTextArea();
+		upcomingStoriesArea.setEditable(false);
+
 		storyTabs.addTab("Active Stories", new JScrollPane(activeStoriesArea));
 		storyTabs.addTab("Completed Stories", new JScrollPane(completedStoriesArea));
+		storyTabs.addTab("Upcoming Stories", new JScrollPane(upcomingStoriesArea));
 
 		// Create the remove button
 		JButton removeTopButton = new JButton("Remove Top Story");
