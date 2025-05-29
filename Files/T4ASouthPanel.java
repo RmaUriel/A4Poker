@@ -51,7 +51,7 @@ public class T4ASouthPanel extends JPanel implements PropertyChangeListener {
 		// Add tabs and button to layout
 		add(storyTabs, BorderLayout.CENTER);
 
-		Blackboard.getInstance().addPropertyChangeListener(this);
+		T4ABlackboard.getInstance().addPropertyChangeListener(this);
 	}
 
 	public String topStory() {

@@ -14,7 +14,7 @@ public class T4AUtilitiesPanel extends JPanel {
         JButton nextStory = new JButton("Next Story");
         JButton addStory = new JButton("Add Story");
         JLabel playersTitle = new JLabel("Players:");
-        JLabel username = new JLabel(Blackboard.getUser());
+        JLabel username = new JLabel(T4ABlackboard.getUser());
 
         setLayout(new GridLayout(11, 1));
         add(viewResults);

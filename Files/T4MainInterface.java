@@ -17,7 +17,7 @@ public class T4MainInterface extends JFrame {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setResizable(false);
 
-      CardsPanel cardsPanel = new CardsPanel();
+      T4ACardsPanel cardsPanel = new T4ACardsPanel();
       add(cardsPanel, BorderLayout.CENTER);
 
       T4ASouthPanel t4ASouthPanel = new T4ASouthPanel();
@@ -29,7 +29,7 @@ public class T4MainInterface extends JFrame {
     }
   @Override
   public Dimension getPreferredSize(){
-    return new Dimension(Blackboard.getInstance().MAIN_WINDOW_WIDTH, Blackboard.getInstance().MAIN_WINDOW_HEIGHT);
+    return new Dimension(T4ABlackboard.getInstance().MAIN_WINDOW_WIDTH, T4ABlackboard.getInstance().MAIN_WINDOW_HEIGHT);
   }
 
 }

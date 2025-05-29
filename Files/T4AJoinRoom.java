@@ -34,7 +34,7 @@ public class T4AJoinRoom extends JFrame {
         joinButton.addActionListener(e->{
             String roomName = enterName.getText();
             if(!roomName.isEmpty()){
-                Blackboard.getInstance().joinRoom(roomName);
+                T4ABlackboard.getInstance().joinRoom(roomName);
 
                 T4MainInterface m = new T4MainInterface();
                 m.pack();
@@ -45,7 +45,7 @@ public class T4AJoinRoom extends JFrame {
     }
     @Override
     public Dimension getPreferredSize(){
-        return new Dimension(Blackboard.getInstance().ROOM_WINDOW_WIDTH, Blackboard.getInstance().ROOM_WINDOW_HEIGHT);
+        return new Dimension(T4ABlackboard.getInstance().ROOM_WINDOW_WIDTH, T4ABlackboard.getInstance().ROOM_WINDOW_HEIGHT);
     }
 
 }

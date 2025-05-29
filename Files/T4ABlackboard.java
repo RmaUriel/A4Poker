@@ -11,7 +11,7 @@ import java.util.Map;
  * @author Owen McManus
  * @version 1
  */
-public class Blackboard extends PropertyChangeSupport {
+public class T4ABlackboard extends PropertyChangeSupport {
     private static LinkedList<String> storyQueue = new LinkedList<>();
     private static LinkedList<String[]> completedStory = new LinkedList<>();
     private static String activeStory = "";
@@ -29,14 +29,14 @@ public class Blackboard extends PropertyChangeSupport {
     public final int MAIN_WINDOW_WIDTH = 1000;
     public final int MAIN_WINDOW_HEIGHT = 800;
 
-    private static Blackboard instance;
+    private static T4ABlackboard instance;
 
-    private Blackboard(){
+    private T4ABlackboard(){
         super(new Object());
     }
-    public static Blackboard getInstance(){
+    public static T4ABlackboard getInstance(){
         if(instance == null)
-            instance = new Blackboard();
+            instance = new T4ABlackboard();
         return instance;
     }
 

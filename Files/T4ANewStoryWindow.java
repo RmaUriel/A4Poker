@@ -6,10 +6,10 @@ import javax.swing.*;
  * @author Owen McManus
  * @version 1
  */
-public class NewStoryWindow extends JFrame {
-    public NewStoryWindow(){
-        NewStoryNanny newStoryNanny = new NewStoryNanny(this);
-        JPanel newStoryPanel = new NewStoryPanel(newStoryNanny);
+public class T4ANewStoryWindow extends JFrame {
+    public T4ANewStoryWindow(){
+        T4ANewStoryNanny newStoryNanny = new T4ANewStoryNanny(this);
+        JPanel newStoryPanel = new T4ANewStoryPanel(newStoryNanny);
         add(newStoryPanel);
     }
 

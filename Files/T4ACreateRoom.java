@@ -53,7 +53,7 @@ public class T4ACreateRoom extends JFrame{
         create.addActionListener(e->{
             String roomName = enterName.getText();
             if(!roomName.isEmpty()){
-                Blackboard.getInstance().addNewRoom(roomName, (String) modesMenu.getSelectedItem());
+                T4ABlackboard.getInstance().addNewRoom(roomName, (String) modesMenu.getSelectedItem());
 
                 T4MainInterface m = new T4MainInterface();
                 m.pack();
@@ -64,6 +64,6 @@ public class T4ACreateRoom extends JFrame{
     }
     @Override
     public Dimension getPreferredSize(){
-        return new Dimension(Blackboard.getInstance().ROOM_WINDOW_WIDTH, Blackboard.getInstance().ROOM_WINDOW_HEIGHT);
+        return new Dimension(T4ABlackboard.getInstance().ROOM_WINDOW_WIDTH, T4ABlackboard.getInstance().ROOM_WINDOW_HEIGHT);
     }
 }

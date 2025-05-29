@@ -44,7 +44,7 @@ public class T4ALogin extends JFrame{
         createButton.addActionListener(e -> {
             String uname = enterName.getText();
             if(!uname.isEmpty()){
-                Blackboard.getInstance().addUser(uname);
+                T4ABlackboard.getInstance().addUser(uname);
                 SwingUtilities.invokeLater(() -> {
                     JFrame createRoom = new T4ACreateRoom();
                     createRoom.pack();
@@ -57,7 +57,7 @@ public class T4ALogin extends JFrame{
         joinButton.addActionListener(e -> {
             String uname = enterName.getText();
             if(!uname.isEmpty()){
-                Blackboard.getInstance().addUser(uname);
+                T4ABlackboard.getInstance().addUser(uname);
                 SwingUtilities.invokeLater(() -> {
                     JFrame joinRoom = new T4AJoinRoom();
                     joinRoom.pack();
@@ -69,7 +69,7 @@ public class T4ALogin extends JFrame{
     }
     @Override
     public Dimension getPreferredSize(){
-        return new Dimension(Blackboard.getInstance().ROOM_WINDOW_WIDTH, Blackboard.getInstance().ROOM_WINDOW_HEIGHT);
+        return new Dimension(T4ABlackboard.getInstance().ROOM_WINDOW_WIDTH, T4ABlackboard.getInstance().ROOM_WINDOW_HEIGHT);
     }
 
 }

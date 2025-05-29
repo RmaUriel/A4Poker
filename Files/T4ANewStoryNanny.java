@@ -10,10 +10,10 @@ import java.util.function.Consumer;
  * @author Owen McManus
  * @version 1
  */
-public class NewStoryNanny {
-    private final NewStoryWindow window;
+public class T4ANewStoryNanny {
+    private final T4ANewStoryWindow window;
 
-    public NewStoryNanny(NewStoryWindow window) {
+    public T4ANewStoryNanny(T4ANewStoryWindow window) {
         this.window = window;
     }
 
@@ -31,7 +31,7 @@ public class NewStoryNanny {
         String[] stories = text.split("\n");
         for(String story : stories){
             if (!story.isEmpty())
-                Blackboard.getInstance().addNewStory(story);
+                T4ABlackboard.getInstance().addNewStory(story);
         }
     }
 

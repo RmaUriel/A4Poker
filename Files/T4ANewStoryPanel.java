@@ -7,10 +7,10 @@ import java.awt.*;
  * @author Owen McManus
  * @version 1
  */
-public class NewStoryPanel extends JPanel {
+public class T4ANewStoryPanel extends JPanel {
     private final JTextArea storyTextArea;
 
-    public NewStoryPanel(NewStoryNanny storiesNanny){
+    public T4ANewStoryPanel(T4ANewStoryNanny storiesNanny){
         setLayout(new BorderLayout());
 
         JLabel titleLabel = new JLabel("Create New Story", SwingConstants.CENTER);

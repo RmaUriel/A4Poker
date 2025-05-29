@@ -16,23 +16,23 @@ public class T4AUtilitiesNanny {
     }
 
     public void openNewStoryWindow(){
-        NewStoryWindow newStoryWindow = new NewStoryWindow();
+        T4ANewStoryWindow newStoryWindow = new T4ANewStoryWindow();
         newStoryWindow.showWindow();
     }
 
     public void showResults(){
-        Blackboard.getInstance().addCompletedStory(Blackboard.getInstance().getActiveStory(), Float.parseFloat(Blackboard.getInstance().getSelection()));
+        T4ABlackboard.getInstance().addCompletedStory(T4ABlackboard.getInstance().getActiveStory(), Float.parseFloat(T4ABlackboard.getInstance().getSelection()));
         switchToResultsGUI();
     }
 
     public void switchToNextStory(){
-        Blackboard.getInstance().setActiveStory(Blackboard.getInstance().dequeueNewStory());
-        Blackboard.getInstance().setSelected(-1);
+        T4ABlackboard.getInstance().setActiveStory(T4ABlackboard.getInstance().dequeueNewStory());
+        T4ABlackboard.getInstance().setSelected(-1);
         switchToCardsGUI();
     }
 
     private void switchToResultsGUI() {
-        T4APieChartPanel resultsPanel = new T4APieChartPanel(new String[]{Blackboard.getInstance().getSelection()}, new int[]{1});
+        T4APieChartPanel resultsPanel = new T4APieChartPanel(new String[]{T4ABlackboard.getInstance().getSelection()}, new int[]{1});
         Component center = ((BorderLayout) window.getContentPane().getLayout()).getLayoutComponent(BorderLayout.CENTER);
         if (center != null)
             window.remove(center);
@@ -43,7 +43,7 @@ public class T4AUtilitiesNanny {
     }
 
     private void switchToCardsGUI() {
-        CardsPanel cardsPanel = new CardsPanel();
+        T4ACardsPanel cardsPanel = new T4ACardsPanel();
         Component center = ((BorderLayout) window.getContentPane().getLayout()).getLayoutComponent(BorderLayout.CENTER);
         if (center != null)
             window.remove(center);
@@ -86,7 +86,7 @@ public class T4AUtilitiesNanny {
     public void saveAndClose(String text) {
         System.out.println(text);
         this.activeStory.add(text);
-        Blackboard.getInstance().addNewStory(text);
+        T4ABlackboard.getInstance().addNewStory(text);
         //switchGUI();
     }
 
