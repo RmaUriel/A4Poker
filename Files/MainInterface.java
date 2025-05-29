@@ -20,10 +20,10 @@ public class MainInterface extends JFrame {
       CardsPanel cardsPanel = new CardsPanel();
       add(cardsPanel, BorderLayout.CENTER);
 
-      SouthPanel southPanel = new SouthPanel();
-      add(southPanel, BorderLayout.SOUTH);
+      T4ASouthPanel t4ASouthPanel = new T4ASouthPanel();
+      add(t4ASouthPanel, BorderLayout.SOUTH);
 
-      JPanel utilitiesPanel = new UtilitiesPanel(new UtilitiesNanny(this));
+      JPanel utilitiesPanel = new T4AUtilitiesPanel(new T4AUtilitiesNanny(this));
       add(utilitiesPanel, BorderLayout.EAST);
 
     }

@@ -8,8 +8,8 @@ import java.awt.*;
  * @author Owen McManus
  * @version 1
  */
-public class UtilitiesPanel extends JPanel {
-    public UtilitiesPanel(UtilitiesNanny utilitiesNanny){
+public class T4AUtilitiesPanel extends JPanel {
+    public T4AUtilitiesPanel(T4AUtilitiesNanny t4AUtilitiesNanny){
         JButton viewResults = new JButton("View Results");
         JButton nextStory = new JButton("Next Story");
         JButton addStory = new JButton("Add Story");
@@ -23,8 +23,8 @@ public class UtilitiesPanel extends JPanel {
         add(playersTitle);
         add(username);
 
-        addStory.addActionListener(e -> utilitiesNanny.openNewStoryWindow());
-        viewResults.addActionListener(e -> utilitiesNanny.showResults());
-        nextStory.addActionListener(e -> utilitiesNanny.switchToNextStory());
+        addStory.addActionListener(e -> t4AUtilitiesNanny.openNewStoryWindow());
+        viewResults.addActionListener(e -> t4AUtilitiesNanny.showResults());
+        nextStory.addActionListener(e -> t4AUtilitiesNanny.switchToNextStory());
     }
 }

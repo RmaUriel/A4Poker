@@ -9,18 +9,18 @@ import java.awt.*;
  * @author MichaelMan
  */
 
-class PieChartPanel extends JPanel {
+class T4APieChartPanel extends JPanel {
     private String[] labels;
     private int[] values;
 
-    public PieChartPanel(String[] labels, int[] values) {
+    public T4APieChartPanel(String[] labels, int[] values) {
         this.labels = labels;
         this.values = values;
 
         setLayout(new BorderLayout());
-        SouthPanel southPanel = new SouthPanel();
+        T4ASouthPanel t4ASouthPanel = new T4ASouthPanel();
 
-        JLabel storyLabel = new JLabel(southPanel.topStory(), SwingConstants.CENTER);
+        JLabel storyLabel = new JLabel(t4ASouthPanel.topStory(), SwingConstants.CENTER);
         storyLabel.setFont(new Font("Arial", Font.BOLD, 18));
         storyLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -50,7 +50,7 @@ class PieChartPanel extends JPanel {
                 try {
                     totalScore += Integer.parseInt(labels[i]) * values[i];
                 } catch (NumberFormatException e) {
-                    // Skip votes like "?"
+                    // Skip votes
                 }
             }
 

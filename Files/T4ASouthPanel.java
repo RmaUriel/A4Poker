@@ -18,14 +18,13 @@ import java.util.Queue;
  * Created a button to remove the top active story
  */
 
-public class SouthPanel extends JPanel implements PropertyChangeListener {
+public class T4ASouthPanel extends JPanel implements PropertyChangeListener {
 	private JTextArea completedStoriesArea;
 	private JTextArea activeStoriesArea;
 	private JTextArea upcomingStoriesArea;
-	//private List<String> active = three.StoriesNanny.getActive();
-    private List<String> active = UtilitiesNanny.getActive();
+    private List<String> active = T4AUtilitiesNanny.getActive();
 
-	public SouthPanel() {
+	public T4ASouthPanel() {
 		setBackground(new Color(161, 190, 239));
 		setLayout(new BorderLayout());
 
@@ -35,6 +34,7 @@ public class SouthPanel extends JPanel implements PropertyChangeListener {
 		for (String s : active) {
 			actString.append(s).append("\n");
 		}
+
 		activeStoriesArea = new JTextArea(String.valueOf(actString));
 		activeStoriesArea.setEditable(false);
 
@@ -48,18 +48,8 @@ public class SouthPanel extends JPanel implements PropertyChangeListener {
 		storyTabs.addTab("Completed Stories", new JScrollPane(completedStoriesArea));
 		storyTabs.addTab("Upcoming Stories", new JScrollPane(upcomingStoriesArea));
 
-		// Create the remove button
-		JButton removeTopButton = new JButton("Remove Top Story");
-		removeTopButton.addActionListener(e -> removeTopStory());
-
-		// Create a panel for the button
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		buttonPanel.add(removeTopButton);
-
 		// Add tabs and button to layout
 		add(storyTabs, BorderLayout.CENTER);
-		add(buttonPanel, BorderLayout.SOUTH);
 
 		Blackboard.getInstance().addPropertyChangeListener(this);
 	}
@@ -68,42 +58,7 @@ public class SouthPanel extends JPanel implements PropertyChangeListener {
 		return active.isEmpty() ? "(No stories)" : active.getFirst();
 	}
 
-	public void addCompletedStory(String story) {
-		String existing = completedStoriesArea.getText();
-		StringBuilder fin = new StringBuilder();
 
-		if (!active.isEmpty()) {
-			active.removeFirst();
-		}
-
-		if (!existing.isEmpty()) {
-			existing += "\n";
-		}
-
-		for (String s : active) {
-			fin.append(s).append("\n");
-		}
-
-		completedStoriesArea.setText(existing + story);
-		activeStoriesArea.setText(fin.toString());
-	}
-
-	// Helper to remove just the top story manually
-	private void removeTopStory() {
-		if (active.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "No more active stories to remove.");
-			return;
-		}
-
-		active.removeFirst();
-
-		// Rebuild the activeStoriesArea text
-		StringBuilder updated = new StringBuilder();
-		for (String s : active) {
-			updated.append(s).append("\n");
-		}
-		activeStoriesArea.setText(updated.toString());
-	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent propertyChangeEvent) {

@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * @author Owen McManus
  * @version 1
  */
-public class UtilitiesNanny {
+public class T4AUtilitiesNanny {
     MainInterface window;
-    UtilitiesNanny(MainInterface window){
+    T4AUtilitiesNanny(MainInterface window){
        this.window = window;
     }
 
@@ -32,7 +32,7 @@ public class UtilitiesNanny {
     }
 
     private void switchToResultsGUI() {
-        PieChartPanel resultsPanel = new PieChartPanel(new String[]{Blackboard.getInstance().getSelection()}, new int[]{1});
+        T4APieChartPanel resultsPanel = new T4APieChartPanel(new String[]{Blackboard.getInstance().getSelection()}, new int[]{1});
         Component center = ((BorderLayout) window.getContentPane().getLayout()).getLayoutComponent(BorderLayout.CENTER);
         if (center != null)
             window.remove(center);
@@ -54,7 +54,6 @@ public class UtilitiesNanny {
     }
 
     // URIEL NANNY
-
     public static void addName(String name){
         if(!name.isEmpty()){
             System.out.println(name);
