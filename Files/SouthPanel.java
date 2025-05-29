@@ -1,7 +1,11 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
+import java.util.Objects;
+import java.util.Queue;
 
 /**
  * Stories organized in tabs.
@@ -14,7 +18,7 @@ import java.util.List;
  * Created a button to remove the top active story
  */
 
-public class SouthPanel extends JPanel {
+public class SouthPanel extends JPanel implements PropertyChangeListener {
 	private JTextArea completedStoriesArea;
 	private JTextArea activeStoriesArea;
 	private JTextArea upcomingStoriesArea;
@@ -56,6 +60,8 @@ public class SouthPanel extends JPanel {
 		// Add tabs and button to layout
 		add(storyTabs, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
+
+		Blackboard.getInstance().addPropertyChangeListener(this);
 	}
 
 	public String topStory() {
@@ -97,5 +103,34 @@ public class SouthPanel extends JPanel {
 			updated.append(s).append("\n");
 		}
 		activeStoriesArea.setText(updated.toString());
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
+		if(Objects.equals(propertyChangeEvent.getPropertyName(), "newStory")){
+			Queue<String> storiesQueue = (Queue<String>) propertyChangeEvent.getNewValue();
+			StringBuilder builder = new StringBuilder();
+			for(String story : storiesQueue){
+				builder.append(story);
+				builder.append("\n");
+			}
+			upcomingStoriesArea.setText(builder.toString());
+		}
+		if(Objects.equals(propertyChangeEvent.getPropertyName(), "completedStory")){
+			List<String[]> storiesList = (List<String[]>) propertyChangeEvent.getNewValue();
+			StringBuilder builder = new StringBuilder();
+			for(String[] story : storiesList){
+				builder.append(story[0]);
+				builder.append(": ");
+				builder.append(story[1]);
+				builder.append("\n");
+			}
+			completedStoriesArea.setText(builder.toString());
+		}
+		if(Objects.equals(propertyChangeEvent.getPropertyName(), "activeStory")){
+			String activeStory = (String) propertyChangeEvent.getNewValue();
+			activeStoriesArea.setText(activeStory);
+		}
+
 	}
 }

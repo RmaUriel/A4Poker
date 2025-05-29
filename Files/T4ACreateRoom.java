@@ -1,22 +1,19 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.*;
 
 
 /**
  * CreateRoom is the frame that will pop up when you want to create a room.
  * Extends JFrame and uses ActionListener to save room options in a dictionary.
  * 
- * Author Uriel Hernandez-Vega
- * Version 1 
+ * @author Uriel Hernandez-Vega
+ * @version 1
  */
 
-public class CreateRoom extends JFrame{
+public class T4ACreateRoom extends JFrame{
     
-    public CreateRoom(){
+    public T4ACreateRoom(){
         setLayout(null);
         setTitle("Create a Room");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,21 +46,21 @@ public class CreateRoom extends JFrame{
         modesMenu.setBounds(200,215,200,30);
         add(modesMenu);
 
-        JLabel desc = new JLabel("Description:");
-        desc.setFont(new Font("Courier", Font.BOLD, 30));
-        desc.setBounds(5,300,300,30);
-        add(desc);
-
-        JTextArea description = new JTextArea();
-        description.setFont(new Font("Courier", Font.PLAIN, 15));
-        description.setBounds(200,300,250,75);
-        add(description);
-
         JButton create = new JButton("Create");
         create.setBounds(200,400, 100,50);
         add(create);
 
-        create.addActionListener(e -> UtilitiesNanny.addRoom(enterName.getText(),(String) modesMenu.getSelectedItem(), description.getText()));
+        create.addActionListener(e->{
+            String roomName = enterName.getText();
+            if(!roomName.isEmpty()){
+                Blackboard.getInstance().addNewRoom(roomName, (String) modesMenu.getSelectedItem());
+
+                MainInterface m = new MainInterface();
+                m.pack();
+                m.setVisible(true);
+                dispose();
+            }
+        });
     }
     @Override
     public Dimension getPreferredSize(){

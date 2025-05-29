@@ -1,35 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.*;
 
-/**
- * joinRoom is the frame that will pop up when you want to join a room.
- * Extends JFramea and uses ActionListener to close frame and open main interface
- * 
- * Author Uriel Hernandez-Vega
- * Version 1 
+/*
+ * @author owen-mcmanus
  */
+public class T4AJoinRoom extends JFrame {
 
-
-public class joinRoom extends JFrame{
-
-    public joinRoom(){
-        setTitle("Join a room");
+    public T4AJoinRoom(){
+        setTitle("Join Room");
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        JLabel join = new JLabel("Join a Room");
+        JLabel join = new JLabel("Enter room name");
         join.setFont(new Font("Courier",Font.BOLD,30));
         join.setBounds(125,0,300,50);
         add(join);
-
-        JLabel account = new JLabel ("Have an Account?");
-        account.setFont(new Font("Courier", Font.BOLD, 30));
-        account.setBounds(100,300, 300,50);
-        add(account);
 
 
         JLabel name = new JLabel("Name:");
@@ -45,12 +31,17 @@ public class joinRoom extends JFrame{
         joinButton.setBounds(180, 175,100,50);
         add(joinButton);
 
-        joinButton.addActionListener(e -> UtilitiesNanny.addName(enterName.getText()));
+        joinButton.addActionListener(e->{
+            String roomName = enterName.getText();
+            if(!roomName.isEmpty()){
+                Blackboard.getInstance().joinRoom(roomName);
 
-        JButton loginButton = new JButton("Login");
-        loginButton.setBounds(180, 365, 100,50);
-        add(loginButton);
-
+                MainInterface m = new MainInterface();
+                m.pack();
+                m.setVisible(true);
+                dispose();
+            }
+        });
     }
     @Override
     public Dimension getPreferredSize(){
@@ -58,4 +49,3 @@ public class joinRoom extends JFrame{
     }
 
 }
-    

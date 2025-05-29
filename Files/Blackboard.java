@@ -1,8 +1,9 @@
+import java.beans.PropertyChangeSupport;
 import java.util.LinkedList;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
+
 
 /**
  * Location for shared app data
@@ -10,15 +11,17 @@ import java.util.Map;
  * @author Owen McManus
  * @version 1
  */
-public class Blackboard {
+public class Blackboard extends PropertyChangeSupport {
     private static LinkedList<String> storyQueue = new LinkedList<>();
+    private static LinkedList<String[]> completedStory = new LinkedList<>();
     private static String activeStory = "";
-    private static int selectedCard = -1;
+    private static float selectedCard = -1;
     private static String user = "Default User";
 
     // Uriel
     private static LinkedList<String> members = new LinkedList<>();
-    private static Map<String, String[]> rooms = new HashMap<>();
+    private String[] activeRoom = {"", ""};
+    private Map<String, String> rooms = new HashMap<>();
 
     // NEW
     public final int ROOM_WINDOW_WIDTH = 500;
@@ -29,7 +32,7 @@ public class Blackboard {
     private static Blackboard instance;
 
     private Blackboard(){
-        super();
+        super(new Object());
     }
     public static Blackboard getInstance(){
         if(instance == null)
@@ -37,24 +40,28 @@ public class Blackboard {
         return instance;
     }
 
-    public static void addNewStory(String story){
+    public void addNewStory(String story){
         storyQueue.add(story);
-        System.out.print("Story added: ");
-        System.out.println(story);
+        firePropertyChange("newStory", null, storyQueue);
     }
 
-    public static String dequeueNewStory(){
+    public String dequeueNewStory(){
         String story = storyQueue.poll();
+        firePropertyChange("newStory", null, storyQueue);
         return story != null ? story : "" ;
     }
 
-    public static void setActiveStory(String story){
-        activeStory = story;
-        System.out.print("New active story: ");
-        System.out.println(activeStory);
+    public void addCompletedStory(String story, float score){
+        completedStory.add(new String[]{story, Float.toString(score)});
+        firePropertyChange("completedStory", null, completedStory);
     }
 
-    public static void setSelected(int value){
+    public void setActiveStory(String story){
+        activeStory = story;
+        firePropertyChange("activeStory", null, activeStory);
+    }
+
+    public void setSelected(float value){
         selectedCard = value;
     }
 
@@ -64,15 +71,29 @@ public class Blackboard {
 
     // THIS IS ADDING URIEL BLACKBOARD
 
-    public static void addUser(String name){
+    public void addUser(String name){
         members.add(name.trim());
     }
 
-    public static void addNewRoom(String name, String mode, String description){
-        if (!name.isEmpty()){
-            String[] roomInfo = {mode, description};
-            rooms.put(name,roomInfo);
-        }
+    public void addNewRoom(String name, String mode){
+        activeRoom[0] = name;
+        activeRoom[1] = mode;
     }
 
+    public void joinRoom(String name){
+        activeRoom[0] = name;
+        activeRoom[1] = "Standard";
+    }
+
+    public String getCardLayout(){
+        return activeRoom[1];
+    }
+
+    public String getSelection(){
+        return Float.toString(selectedCard);
+    }
+
+    public String getActiveStory(){
+        return activeStory;
+    }
 }

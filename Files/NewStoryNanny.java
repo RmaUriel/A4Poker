@@ -31,7 +31,7 @@ public class NewStoryNanny {
         String[] stories = text.split("\n");
         for(String story : stories){
             if (!story.isEmpty())
-                Blackboard.addNewStory(story);
+                Blackboard.getInstance().addNewStory(story);
         }
     }
 

@@ -1,5 +1,3 @@
-import com.sun.tools.javac.Main;
-
 import java.awt.*;
 import javax.swing.*;
 import java.util.List;
@@ -12,8 +10,8 @@ import java.util.ArrayList;
  * @version 1
  */
 public class UtilitiesNanny {
-    MockMain window;
-    UtilitiesNanny(MockMain window){
+    MainInterface window;
+    UtilitiesNanny(MainInterface window){
        this.window = window;
     }
 
@@ -23,17 +21,18 @@ public class UtilitiesNanny {
     }
 
     public void showResults(){
+        Blackboard.getInstance().addCompletedStory(Blackboard.getInstance().getActiveStory(), Float.parseFloat(Blackboard.getInstance().getSelection()));
         switchToResultsGUI();
     }
 
     public void switchToNextStory(){
-        Blackboard.setActiveStory(Blackboard.dequeueNewStory());
-        Blackboard.setSelected(-1);
+        Blackboard.getInstance().setActiveStory(Blackboard.getInstance().dequeueNewStory());
+        Blackboard.getInstance().setSelected(-1);
         switchToCardsGUI();
     }
 
     private void switchToResultsGUI() {
-        MockResultsPanel resultsPanel = new MockResultsPanel();
+        PieChartPanel resultsPanel = new PieChartPanel(new String[]{Blackboard.getInstance().getSelection()}, new int[]{1});
         Component center = ((BorderLayout) window.getContentPane().getLayout()).getLayoutComponent(BorderLayout.CENTER);
         if (center != null)
             window.remove(center);
@@ -44,7 +43,7 @@ public class UtilitiesNanny {
     }
 
     private void switchToCardsGUI() {
-        MockCardPanel cardsPanel = new MockCardPanel();
+        CardsPanel cardsPanel = new CardsPanel();
         Component center = ((BorderLayout) window.getContentPane().getLayout()).getLayoutComponent(BorderLayout.CENTER);
         if (center != null)
             window.remove(center);
@@ -88,7 +87,7 @@ public class UtilitiesNanny {
     public void saveAndClose(String text) {
         System.out.println(text);
         this.activeStory.add(text);
-        Blackboard.addNewStory(text);
+        Blackboard.getInstance().addNewStory(text);
         //switchGUI();
     }
 
