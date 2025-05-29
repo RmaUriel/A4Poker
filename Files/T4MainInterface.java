@@ -9,9 +9,9 @@ import java.awt.*;
  * 
  */
 
-public class MainInterface extends JFrame {
+public class T4MainInterface extends JFrame {
 
-    public MainInterface(){
+    public T4MainInterface(){
       setLayout(new BorderLayout());
       setTitle("Main Interface");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

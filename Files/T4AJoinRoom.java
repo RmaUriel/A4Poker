@@ -36,7 +36,7 @@ public class T4AJoinRoom extends JFrame {
             if(!roomName.isEmpty()){
                 Blackboard.getInstance().joinRoom(roomName);
 
-                MainInterface m = new MainInterface();
+                T4MainInterface m = new T4MainInterface();
                 m.pack();
                 m.setVisible(true);
                 dispose();

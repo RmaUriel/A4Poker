@@ -55,7 +55,7 @@ public class T4ACreateRoom extends JFrame{
             if(!roomName.isEmpty()){
                 Blackboard.getInstance().addNewRoom(roomName, (String) modesMenu.getSelectedItem());
 
-                MainInterface m = new MainInterface();
+                T4MainInterface m = new T4MainInterface();
                 m.pack();
                 m.setVisible(true);
                 dispose();

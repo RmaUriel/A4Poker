@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * @version 1
  */
 public class T4AUtilitiesNanny {
-    MainInterface window;
-    T4AUtilitiesNanny(MainInterface window){
+    T4MainInterface window;
+    T4AUtilitiesNanny(T4MainInterface window){
        this.window = window;
     }
 
@@ -58,9 +58,9 @@ public class T4AUtilitiesNanny {
         if(!name.isEmpty()){
             System.out.println(name);
             SwingUtilities.invokeLater(() -> {
-                MainInterface mainInterface = new MainInterface();
-                mainInterface.pack();
-                mainInterface.setVisible(true);
+                T4MainInterface t4MainInterface = new T4MainInterface();
+                t4MainInterface.pack();
+                t4MainInterface.setVisible(true);
             });
         }
     }
